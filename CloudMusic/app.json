@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/search/search",
+    "pages/user/user",
+    "pages/musicplay/musicplay",
+    "pages/mvplay/mvplay",
+    "pages/singer/singer",
+    "pages/rank/rank",
+    "pages/list/list",
+    "pages/sheetdetail/sheetdetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f00",
+    "navigationBarTitleText": "CloudMusic",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "backgroundColor": "#000",
+    "color": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "",
+        "iconPath": "/pages/image/cm2_btm_icn_discovery.png",
+        "selectedIconPath": "/pages/image/cm2_btm_icn_discovery_prs.png"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "",
+        "iconPath": "/pages/image/cm2_btm_icn_music.png",
+        "selectedIconPath": "/pages/image/cm2_btm_icn_music_prs.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "",
+        "iconPath": "/pages/image/cm2_btm_icn_account.png",
+        "selectedIconPath": "/pages/image/cm2_btm_icn_account_prs.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "",
+        "iconPath": "/pages/image/cm2_btm_icn_account.png",
+        "selectedIconPath": "/pages/image/cm2_btm_icn_account_prs.png"
+      }
+    ]
+  }
+}

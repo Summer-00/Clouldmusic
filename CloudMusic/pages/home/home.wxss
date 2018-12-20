@@ -1,0 +1,53 @@
+/* pages/home/home.wxss */
+.slider image{
+  width: 100%;
+}
+.slider{
+  height:360rpx;
+  position: relative;
+}
+.slider .slider-title {
+  position: fixed;
+  font-size: 14px;
+  left: 0;
+  top: 1rpx;
+  color: white;
+  background: red;
+  z-index: 10;
+  padding-right: 6px;
+  border-radius: 0 5px 5px 0;
+}
+.slider swiper-item{
+  width: 100%;
+  position: relative;
+}
+.slider swiper-item .title{
+  position: absolute;
+  top: 1rpx;
+  right: 0rpx;
+  font-size: 14px;
+  color: white;
+  background: #000;
+  opacity: .6;
+}
+.highquality{
+  margin-top:30rpx;
+}
+.highquality .list-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.highquality .list-content{
+  width: 30%;
+  height: 350rpx;
+}
+.highquality .list-content image{
+  width: 100%;
+  height: 113px;
+}
+.highquality .list-content .title{
+  font-size: 12px;
+}
+
+

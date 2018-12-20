@@ -1,0 +1,14 @@
+<!--pages/home/component/song sheet.wxml-->
+<!-- <text>pages/home/component/song sheet.wxml</text> -->
+
+  <view class='highquality'>
+    <slot></slot>
+    <view class='list-container'>
+    <view class='list-content'  wx:for="{{list}}" wx:key="index"
+      lazy-load bindtap="toDetail">
+     <image data-id='{{item.id}}'  src='{{item.coverImgUrl}}'></image>
+     <text data-id='{{item.id}}' class='title'>{{item.title}}</text>
+    </view>
+    </view>
+
+  </view>

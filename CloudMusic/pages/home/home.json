@@ -1,0 +1,5 @@
+{
+  "usingComponents":{
+    "songsheet":"../component/songsheet/songsheet"
+  }
+}

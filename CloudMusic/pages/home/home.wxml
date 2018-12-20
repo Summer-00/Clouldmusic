@@ -1,0 +1,30 @@
+<!--pages/home/home.wxml-->
+<!-- <text>主页</text> -->
+
+  <swiper class='slider' autoplay indicator-dots indicator-active-color="#fff" >
+  
+      <swiper-item wx:for="{{slider}}" wx:key="index">
+      <text class='slider-title'>热门歌单</text>
+      <image laszy-load mode='aspectFill'  src='{{item.coverImgUrl}}' ></image>
+      <view class='title'>{{item.title}}</view>
+      </swiper-item>
+  </swiper>
+
+  <songsheet url="{{hot}}">
+  <text>热门歌单</text>
+  </songsheet>
+  
+  
+  <view class='highquality'>
+    <text>精品歌单</text>
+    <view class='list-container'>
+    <view class='list-content' wx:for="{{highquality}}" wx:key="index">
+     <image lazy-load  src='{{item.coverImgUrl}}'></image>
+     <text class='title'>{{item.title}}</text>
+    </view>
+   
+    </view>
+
+  </view>
+
+

@@ -1,0 +1,8 @@
+/* pages/sheetdetail/sheetdetail.wxss */
+page{
+  background: #000;
+}
+.head pagepic{
+
+  
+}
