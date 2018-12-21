@@ -1,1 +1,92 @@
 /* pages/musicplay/musicplay.wxss */
+page{
+  /* position: flex; */
+  width: 100%;
+  height: 100%; 
+  overflow: hidden;
+}
+.background{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.filter{
+/* filter: blur(20rpx); */
+position: absolute;
+width:100%;
+height: 100%;
+overflow: hidden;
+top: 0;
+}
+.filter image{
+width: 100%;
+height: 100%;
+filter: blur(20rpx);
+}
+.cover{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* top: 0; */
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  
+}
+.cover .img-cover{
+  /* position: absolute; */
+  width: 570rpx;
+  height: 570rpx;
+  top: 0;
+  z-index: 10;
+  border-radius: 50%;
+  box-shadow: 0 0 10rpx #000;
+  transform-origin: 50% 50%;
+}
+
+.cover .img-bg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.contral{
+  position: absolute;
+  width: 100%;
+  height: 160rpx;
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+  align-items:center;
+  background-color: rgba(0, 0, 0, .3);
+  /* background:linear-gradient(-180deg,#333,#000); */
+}
+.contral view.type,
+.contral view.prev,
+.contral view.next
+{
+width: 80rpx;
+height: 80rpx;
+}
+/* .contral view.prev{
+  width: 80rpx;
+height: 80rpx;
+}
+.contral view.next{
+  width: 9rpx;
+height: 90rpx;
+} */
+.contral view.play{
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.contral view.playlist{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.contral view image{
+  width: 100%;
+  height:100%;
+  
+}

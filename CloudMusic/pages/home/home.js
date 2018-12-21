@@ -1,6 +1,17 @@
 // pages/home/home.js
 Page({
 
+  toDetail(e) {
+    var id = e.target.dataset.id
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/sheetdetail/sheetdetail?id=' + id,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
+
   /**
    * 页面的初始数据
    */
@@ -8,7 +19,8 @@ Page({
     slider:[],
     highquality:[],
     hot:"https://api.bzqll.com/music/netease/hotSongList?key=579621905&cat=全部&limit=6&offset=1",
-    news: "https://api.bzqll.com/music/netease/hotSongList?key=579621905&cat=全部&limit=6&offset=1"
+    news:"https://api.bzqll.com/music/netease/hotSongList?key=579621905&cat=全部&limit=6&offset=1",
+    highquality:"https://api.bzqll.com/music/netease/highQualitySongList?key=579621905&cat=全部&limit=6"
 
   },
 

@@ -9,38 +9,47 @@
 
 <view>
   <view  class='head'>
-  <image class='pagepic' laszy-load mode='aspectFill' src='{{details.songListPic}}'></image>
-  <text class='title'>{{details.songListName}}</text>
-  <text class='playcount'>{{detalis.songListPlayCount}}</text>
+    <image class='pagepic' laszy-load  src='{{details.songListPic}}'></image>
+    <view>
+    <text class='title'>{{details.songListName}}</text>
+
+    <view class='playcount'><image src='/pages/image/p0.png'></image>
+    {{details.songListPlayCount}}</view>
+  </view>
+
   <image class='details'src="/pages/image/cm2_list_detail_icn_infor@2x.png"></image>
   </view>
 
   <view class='list-nav'>
-  <view class='commit'>评论 
-    <image class='/pages/image/cm2_play_icn_cmt@2x.png'></image>
+    <view class='commit'> 
+    <image src='/pages/image/cm2_list_detail_icn_cmt@2x.png'></image>
     </view>
-  <view class='share'>分享 
-    <image class='pages/image/cm2_list_detail_icn_share@2x.png'></image>
+    <view class='share'> 
+    <image src='/pages/image/cm2_list_detail_icn_share@2x.png'></image>
     </view>
-  <view class='download'>下载
-    <image src='/pages/image/cm2_play_icn_dld@2x.png'></image>
+    <view class='download'>
+    <image src='/pages/image/cm2_list_detail_icn_dld@2x.png'></image>
+    </view>
+    <view class='select'>
+    <image src='/pages/image/cm2_list_detail_icn_faved@2x.png'></image>
     </view>
   </view>
+
   
   <view class='list-container'>
   
   <view wx:for="{{details.songs}}" wx:key="index" class='list'>
-  <text class='index'>{{index}}</text>
+    <text class='index'>{{index+1}}</text>
 
-  <view class='song'>
-  <text class='sonegname'>{{item.name}}</text>
-  <text class='singer'>{{item.singer}}</text>
+    <view data-id='{{item.id}}' bindtap='ToMusicplayer'  class='song'>
+      <text class='line-style songname'>{{item.name}}</text>
+      <text class='line-style singer'>{{item.singer}}</text>
+    </view>
+
+  <view class='play'>
+    <image src='/pages/image/l0.png'></image>
+    <image src='/pages/image/cm2_play_icn_more@2x.png'></image>
   </view>
-
-<view class='play'>
-<image src='/pages/image/l0.png'></image>
-<image src='/pages/image/cm2_play_icn_more@2x.png'></image>
-</view>
 
   </view>
   </view>

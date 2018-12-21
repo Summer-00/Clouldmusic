@@ -1,6 +1,15 @@
 // pages/sheetdetail/sheetdetail.js
 Page({
-
+  ToMusicplayer(event){
+    var id = event.currentTarget.dataset.id;
+    // console.log(event)
+    wx.navigateTo({
+      url: '/pages/musicplay/musicplay?id=' + id,
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
   /**
    * 页面的初始数据
    */

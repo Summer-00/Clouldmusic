@@ -15,16 +15,16 @@
   </songsheet>
   
   
+  
   <view class='highquality'>
     <text>精品歌单</text>
     <view class='list-container'>
-    <view class='list-content' wx:for="{{highquality}}" wx:key="index">
-     <image lazy-load  src='{{item.coverImgUrl}}'></image>
-     <text class='title'>{{item.title}}</text>
+    <view class='list-content' wx:for="{{highquality}}" wx:key="index" bindtap="toDetail">
+     <image lazy-load data-id='{{item.id}}'  src='{{item.coverImgUrl}}'></image>
+     <text data-id='{{item.id}}' class='title'>{{item.title}}</text>
     </view>
-   
-    </view>
+  </view> 
 
-  </view>
+</view>
 
 

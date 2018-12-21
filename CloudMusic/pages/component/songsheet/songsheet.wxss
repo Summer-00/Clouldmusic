@@ -1,7 +1,7 @@
 /* pages/home/component/song sheet.wxss */
 .highquality .list-container{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 .highquality .list-content{

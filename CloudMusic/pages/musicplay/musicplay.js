@@ -1,18 +1,41 @@
 // pages/musicplay/musicplay.js
+const innerAudioContext = wx.createInnerAudioContext()
 Page({
-
+  play(){
+    innerAudioContext.play();
+  },
+  Playmusic(){
+    console.log(this);
+    if(this.data.isPlay==false){
+      this.setData({
+      isPlay:true
+      })
+    }else{
+      this.setData({
+        isPlay: false
+      })
+    }
+  },
   /**
    * 页面的初始数据
    */
   data: {
-
+    songid:"",
+    isPlay:"false"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  
+    // innerAudioContext.src ="http://127.0.0.1:4000/mp3/bg.mp3";
+  
+    // play();
+    // var songid = options.id;
+    // this.setData({
+    //   songid: songid
+    // })
   },
 
   /**
@@ -26,7 +49,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    innerAudioContext.src = "http://127.0.0.1:4000/mp3/bg.mp3"
   },
 
   /**
