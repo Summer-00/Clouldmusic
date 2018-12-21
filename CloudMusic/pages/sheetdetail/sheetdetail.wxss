@@ -1,6 +1,6 @@
 /* pages/sheetdetail/sheetdetail.wxss */
 page{
-  background: #000;
+  background:rgba(0, 0, 0, .8);
 }
 head{
   position: relative;

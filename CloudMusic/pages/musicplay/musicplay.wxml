@@ -10,7 +10,7 @@
 
       <image mode='aspectFill' class='img-bg'    src='/pages/image/cm2_play_disc_radio-ip6@2x.png'></image>
 
-      <image mode='aspectFill' class='img-cover' src='http://127.0.0.1:4000/test/test2.jpg'></image>
+      <image mode='aspectFill'  animation="{{animation}}" class='img-cover' src='http://127.0.0.1:4000/test/test2.jpg'></image>
     </view>
 
     <view class='contral'>
@@ -24,8 +24,8 @@
       <image src='/pages/image/ajh.png'></image>
       </view>
     
-      <view catchtap='Playmusic' class='play'>
-      <image wx:if="{{isplay==false}}" src='/pages/image/ajf.png'></image>
+      <view catchtap='playmusic' class='play'>
+      <image wx:if="{{!isPlay}}" src='/pages/image/ajf.png'></image>
       <image wx:else src='/pages/image/ajd.png'></image>
       </view>
 

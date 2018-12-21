@@ -1,55 +1,70 @@
 // pages/musicplay/musicplay.js
-const innerAudioContext = wx.createInnerAudioContext()
 Page({
   play(){
     innerAudioContext.play();
   },
-  Playmusic(){
-    console.log(this);
-    if(this.data.isPlay==false){
+  playmusic(){
+    if(!this.data.isPlay){
       this.setData({
-      isPlay:true
+        isPlay: true
       })
+      // console.log(this.animation);
+      this.data.timer = setInterval(() => {
+        var rotate = this.data.rotate + 10;
+        // console.log(rotate)
+        this.animation.rotate(rotate).step();
+
+        this.setData({
+          animation: this.animation.export(),
+          rotate: rotate
+        })
+
+      }, 400);
     }else{
+      
       this.setData({
         isPlay: false
       })
+      clearInterval(this.data.timer);
     }
-  },
+  }, 
   /**
    * 页面的初始数据
    */
   data: {
     songid:"",
-    isPlay:"false"
+    isPlay:false,
+    rotate:0,
+    timer:"",
+    mp3:"http://127.0.0.1:4000/mp3/test.mp3"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-    // innerAudioContext.src ="http://127.0.0.1:4000/mp3/bg.mp3";
-  
-    // play();
-    // var songid = options.id;
-    // this.setData({
-    //   songid: songid
-    // })
+    var songid = options.id;
+    this.setData({
+      songid: songid
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.animation = wx.createAnimation(
+      {
+        duration: 500,
+        timingFunction: "linear"
+      }
+    );
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    innerAudioContext.src = "http://127.0.0.1:4000/mp3/bg.mp3"
   },
 
   /**
