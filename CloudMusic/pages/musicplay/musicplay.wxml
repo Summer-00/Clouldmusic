@@ -33,10 +33,15 @@
       <image src='/pages/image/ajb.png'></image>
       </view>
       
+      <view class='slider'>
+        <slider></slider>
+      </view>
+
       <view class='playlist'>
       <image src='/pages/image/cm2_rdi_icn_list@2x.png'></image>
       </view>
       
+
  
     </view>
 

@@ -1,8 +1,6 @@
 // pages/musicplay/musicplay.js
+const music = wx.getBackgroundAudioManager();
 Page({
-  play(){
-    innerAudioContext.play();
-  },
   playmusic(){
     if(!this.data.isPlay){
       this.setData({
@@ -20,14 +18,25 @@ Page({
         })
 
       }, 400);
+     music.play();
     }else{
       
       this.setData({
         isPlay: false
       })
+
       clearInterval(this.data.timer);
+      music.pause();
     }
   }, 
+  end(){
+    this.setData({
+      isPlay:false
+    });
+    this.playmusic();
+
+  },
+  
   /**
    * 页面的初始数据
    */
@@ -36,7 +45,8 @@ Page({
     isPlay:false,
     rotate:0,
     timer:"",
-    mp3:"http://127.0.0.1:4000/mp3/test.mp3"
+    mp3:"http://127.0.0.1:4000/mp3/bg.mp3",
+    title:""
   },
 
   /**
@@ -59,6 +69,21 @@ Page({
         timingFunction: "linear"
       }
     );
+    // wx.playBackgroundAudio({
+    //   dataUrl: 'http://127.0.0.1:4000/mp3/test.mp3',
+    // })
+
+    
+    music.src ="http://127.0.0.1:4000/mp3/bg.mp3";
+    music.title="test"
+    this.playmusic();
+    music.onEnded(()=>{
+      // this.setData({
+      //   isPlay: false
+      // });
+      console.log(this.data.isPlay)
+      this.playmusic();
+    });
   },
 
   /**
