@@ -33,8 +33,8 @@
       <image src='/pages/image/ajb.png'></image>
       </view>
       
-      <view class='slider'>
-        <slider></slider>
+      <view class='slider'  >
+        <slider activeColor="#F00" value='{{value}}' bindchange="sliderchange" block-size="15" show-value step='1' min='0' max='{{length}}'></slider>
       </view>
 
       <view class='playlist'>

@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/musicplay/musicplay",
+    
     "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
+    "pages/musicplay/musicplay",
     "pages/search/search",
     "pages/user/user",
   

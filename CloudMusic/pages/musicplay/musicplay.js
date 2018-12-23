@@ -18,7 +18,8 @@ Page({
         })
 
       }, 400);
-     music.play();
+     music.play();//播放
+      // console.log(parseInt(music.duration));
     }else{
       
       this.setData({
@@ -26,7 +27,7 @@ Page({
       })
 
       clearInterval(this.data.timer);
-      music.pause();
+      music.pause();//暂停
     }
   }, 
   end(){
@@ -34,6 +35,12 @@ Page({
       isPlay:false
     });
     this.playmusic();
+
+  },
+  //滑动滑块加载音乐位置
+  sliderchange(e){
+    console.log(e);
+    music.seek(e.detail.value);
 
   },
   
@@ -45,8 +52,10 @@ Page({
     isPlay:false,
     rotate:0,
     timer:"",
-    mp3:"http://127.0.0.1:4000/mp3/bg.mp3",
-    title:""
+    mp3:"http://127.0.0.1:4000/mp3/test.mp3",
+    title:"",
+    length:225,
+    value:0
   },
 
   /**
@@ -63,27 +72,34 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    //图片转动
     this.animation = wx.createAnimation(
       {
         duration: 500,
         timingFunction: "linear"
       }
     );
-    // wx.playBackgroundAudio({
-    //   dataUrl: 'http://127.0.0.1:4000/mp3/test.mp3',
-    // })
-
+    //加载音乐
+    music.src ="http://127.0.0.1:4000/mp3/test.mp3";
+    music.title="test";
+    setTimeout(()=>{
+      console.log(music.duration);
+    })
     
-    music.src ="http://127.0.0.1:4000/mp3/bg.mp3";
-    music.title="test"
     this.playmusic();
+    //监听播放自然结束
     music.onEnded(()=>{
-      // this.setData({
-      //   isPlay: false
-      // });
-      console.log(this.data.isPlay)
+      console.log(this.data.isPlay);
       this.playmusic();
     });
+    //监听播放更新
+    music.onTimeUpdate(()=>{
+      // console.log(music.currentTime)
+      this.setData({
+        value: music.currentTime
+      })
+
+    })
   },
 
   /**
