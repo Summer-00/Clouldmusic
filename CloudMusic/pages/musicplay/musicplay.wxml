@@ -3,14 +3,22 @@
 <!-- <text>{{songid}}</text> -->
 <view class='background'>
   <view  class='filter' >
-    <image aspectFill src='http://127.0.0.1:4000/test/test2.jpg'></image>
+    <image  src='{{details.pic}}'></image>
   </view>
 
-    <view class='cover'>
+    <view catchtap='showlyric' wx:if="{{show}}"  class='cover'>
+      <text class='title'>{{details.name}}</text>
+      <text class="singer">{{details.singer}}</text>
+
 
       <image mode='aspectFill' class='img-bg'    src='/pages/image/cm2_play_disc_radio-ip6@2x.png'></image>
 
-      <image mode='aspectFill'  animation="{{animation}}" class='img-cover' src='http://127.0.0.1:4000/test/test2.jpg'></image>
+      <image mode='aspectFill'  animation="{{animation}}" class='img-cover' src='{{details.pic}}'></image>
+    </view>
+
+    <view catchtap='showlyric' wx:else class='lyric'>
+       <view wx:for="{{lyric}}">{{item}}</view>
+
     </view>
 
     <view class='contral'>
@@ -34,15 +42,38 @@
       </view>
       
       <view class='slider'  >
-        <slider activeColor="#F00" value='{{value}}' bindchange="sliderchange" block-size="15" show-value step='1' min='0' max='{{length}}'></slider>
+     <text>{{time}}</text>
+     <view>
+     <slider activeColor="#F00" value='{{value}}' bindchange="sliderchange" block-size="15"  step='1' min='0' max='{{details.time}}'></slider>
+     </view>
+        
+      <text>{{length}}</text>
       </view>
 
-      <view class='playlist'>
+      <view catchtap='showlist' class='playlist'>
       <image src='/pages/image/cm2_rdi_icn_list@2x.png'></image>
       </view>
       
 
  
+    </view>
+
+    <view class='list {{showlist}}'>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+      <view>播放列表 </view>
+
+      <view>播放列表 </view>
+
     </view>
 
     </view>

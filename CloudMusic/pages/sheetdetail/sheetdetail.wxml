@@ -38,20 +38,20 @@
   
   <view class='list-container'>
   
-  <view wx:for="{{details.songs}}" wx:key="index" class='list'>
-    <text class='index'>{{index+1}}</text>
+    <view wx:for="{{details.songs}}" wx:key="index" class='list'>
+      <text class='index'>{{index+1}}</text>
 
-    <view data-id='{{item.id}}' bindtap='ToMusicplayer'  class='song'>
-      <text class='line-style songname'>{{item.name}}</text>
-      <text class='line-style singer'>{{item.singer}}</text>
+      <view data-id='{{item.id}}' bindtap='ToMusicplayer'  class='song'>
+        <text class='line-style songname'>{{item.name}}</text>
+        <text class='line-style singer'>{{item.singer}}</text>
+      </view>
+
+      <view class='play'>
+      <image src='/pages/image/l0.png'></image>
+      <image src='/pages/image/cm2_play_icn_more@2x.png'></image>
+      </view>
+
     </view>
-
-  <view class='play'>
-    <image src='/pages/image/l0.png'></image>
-    <image src='/pages/image/cm2_play_icn_more@2x.png'></image>
-  </view>
-
-  </view>
   </view>
 
 </view>

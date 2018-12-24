@@ -6,10 +6,8 @@ Page({
       this.setData({
         isPlay: true
       })
-      // console.log(this.animation);
       this.data.timer = setInterval(() => {
         var rotate = this.data.rotate + 10;
-        // console.log(rotate)
         this.animation.rotate(rotate).step();
 
         this.setData({
@@ -19,7 +17,7 @@ Page({
 
       }, 400);
      music.play();//播放
-      // console.log(parseInt(music.duration));
+  
     }else{
       
       this.setData({
@@ -35,7 +33,6 @@ Page({
       isPlay:false
     });
     this.playmusic();
-
   },
   //滑动滑块加载音乐位置
   sliderchange(e){
@@ -43,19 +40,60 @@ Page({
     music.seek(e.detail.value);
 
   },
+  getlength(length){
+    
+    //设置长度
+    var second = length % 60;
+    var min = (length - second) / 60;
+    min = min >= 10 ? min : "0" + min;
+    second = second >= 10 ? second : "0" + second;
+    var time = min + ":" + second;
+    return time;
+
+  },
+  showlyric(){
+    if(this.data.show){
+      this.setData({
+        show: false
+      })
+    }else{
+      this.setData({
+        show: true
+      })
+    }
+  },
+  showlist(){
+    console.log(1);
+    if (this.data.showlist=="active") {
+      this.setData({
+        showlist:""
+      })
+    } else {
+      this.setData({
+        showlist:"active"
+      })
+    }
+  },
   
   /**
    * 页面的初始数据
    */
   data: {
-    songid:"",
+    // songid:"",
     isPlay:false,
     rotate:0,
     timer:"",
-    mp3:"http://127.0.0.1:4000/mp3/test.mp3",
+    // mp3:"http://127.0.0.1:4000/mp3/test.mp3",
     title:"",
     length:225,
-    value:0
+    // sliderlength:225,
+    time:"1:00",
+    value:0,
+    show:true,
+    lyric:[],
+  
+    showlist:"",
+    details:""
   },
 
   /**
@@ -66,6 +104,112 @@ Page({
     this.setData({
       songid: songid
     })
+    wx.request({
+      url: 'https://api.bzqll.com/music/netease/song?key=579621905&id='+songid,
+      complete:(res)=>{
+        console.log(res.data.data);
+        this.setData({
+          details: res.data.data
+        })
+
+
+        //加载音乐
+        console.log(this.data.details.url)
+        music.src = this.data.details.url;
+        music.title = this.data.details.name;
+
+        //音频长度(xx:xx形式)
+        var songtime = this.data.details.time
+        var time = this.getlength(songtime);
+        console.log(time)
+        this.setData({
+          length: time
+        })
+
+        //载入图片转动
+        this.playmusic();
+
+
+
+
+
+
+        //监听播放自然结束 循环播放
+        music.onEnded(() => {
+          console.log(this.data.isPlay);
+          // this.playmusic();
+          music.src = this.data.details.url;
+          music.title = this.data.details.name;
+        });
+
+        //歌词
+        wx.request({
+          url: this.data.details.lrc,
+          complete: (res) => {
+            var arr = res.data.split("\n")
+            arr.pop();
+            console.log(arr);
+
+            var arr2 = [];
+
+            for (var i = 0; i < arr.length; i++) {
+              var obj = {};
+              var newarr = arr[i].split("]");
+              obj.time = newarr[0].split(".")[0].split("[")[1];
+              obj.lyr = newarr[1];
+              arr2.push(obj);
+            }
+            console.log(arr2);
+
+            //监听播放更新
+            music.onTimeUpdate(() => {
+              // console.log(music.currentTime)
+              var nowtime = parseInt(music.currentTime)
+              this.setData({
+                value: nowtime
+              });
+              // console.log(this.data.value)
+              var update = this.getlength(nowtime);
+              this.setData({
+                time: update
+              })
+
+              for (var i = 0; i < arr2.length; i++) {
+                if (arr2[i].time == update) {
+                  if (arr2[i + 4]) {
+                    var lyrarr = [arr2[i].lyr,
+                    arr2[i + 1].lyr,
+                    arr2[i + 2].lyr,
+                    arr2[i + 3].lyr,
+                    arr2[i + 4].lyr]
+                  } else {
+                    var arr3 = arr2.slice(i)
+                    var lyrarr = [];
+                    for (var item of arr3) {
+                      lyrarr.push(item.lyr)
+                    }
+                    // arr2[i + 1].lyr
+
+                  }
+                  this.setData({
+                    lyric: lyrarr
+
+
+
+                  })
+                }
+              }
+
+            })
+
+
+          }
+
+        })
+
+      }
+    })
+   
   },
 
   /**
@@ -79,27 +223,8 @@ Page({
         timingFunction: "linear"
       }
     );
-    //加载音乐
-    music.src ="http://127.0.0.1:4000/mp3/test.mp3";
-    music.title="test";
-    setTimeout(()=>{
-      console.log(music.duration);
-    })
     
-    this.playmusic();
-    //监听播放自然结束
-    music.onEnded(()=>{
-      console.log(this.data.isPlay);
-      this.playmusic();
-    });
-    //监听播放更新
-    music.onTimeUpdate(()=>{
-      // console.log(music.currentTime)
-      this.setData({
-        value: music.currentTime
-      })
-
-    })
+   
   },
 
   /**

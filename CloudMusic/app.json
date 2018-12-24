@@ -1,17 +1,18 @@
 {
   "pages": [
-    
+    "pages/list/list",
+    "pages/musicplay/musicplay",
     "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/musicplay/musicplay",
+  
     "pages/search/search",
     "pages/user/user",
   
     "pages/mvplay/mvplay",
     "pages/singer/singer",
     "pages/rank/rank",
-    "pages/list/list",
+    
     "pages/sheetdetail/sheetdetail"
   ],
   "window": {

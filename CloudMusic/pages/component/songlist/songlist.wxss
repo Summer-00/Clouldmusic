@@ -1,0 +1,42 @@
+/* pages/component/songlist/songlist.wxss */
+.list-container{
+  background: rgba(37, 34, 34, 0.9)
+}
+.list-container .list{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10rpx;
+  border-bottom: 1rpx solid rgba(37, 34, 34, 0.5);
+  /* opacity: .5 */
+}
+.list-container .list image{
+  width:60rpx;
+  height: 60rpx;
+}
+.list-container .list .index {
+color: #fff;
+text-align: left;
+width: 40rpx;
+border: 0;
+}
+.list-container .list .song{
+  width: 500rpx;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  text-align: left;
+}
+.list-container .list .songname{
+  /* width: 500rpx; */
+
+  font-size: 16px;
+}
+.list-container .list .line-style{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.list-container .list .singer{
+  font-size: 12px;
+  color: rgba(100, 95, 95, 0.8)
+}

@@ -1,0 +1,20 @@
+<!--pages/component/songlist/songlist.wxml-->
+<!-- <text>pages/component/songlist/songlist.wxml</text> -->
+
+ <view class='list-container'>
+  
+    <view wx:for="{{Songlist}}" wx:key="index" class='list'>
+      <text class='index'>{{index+1}}</text>
+
+      <view data-id='{{item.id}}' bindtap='ToMusicplayer'  class='song'>
+        <text class='line-style songname'>{{item.name}}</text>
+        <text class='line-style singer'>{{item.singer}}</text>
+      </view>
+
+      <view class='play'>
+      <image src='/pages/image/ajf.png'></image>
+      <image src='/pages/image/cm2_playlist_icn_dlt@2x.png'></image>
+      </view>
+
+    </view>
+  </view>

@@ -1,1 +1,16 @@
 /* pages/user/user.wxss */
+/* pages/profile/profile.wxss */
+/*头像*/
+.avatar{
+  background-color: #f00;
+  height:400rpx;
+  display: flex;          /*布局方式*/
+  justify-content: center;/*子元素居中*/
+  align-items: center;
+}
+.avatar image{
+   width:190rpx;
+   height:190rpx;
+   border-radius: 50%;
+   border:3px solid rgba(0,0,0,.3);
+}

@@ -1,2 +1,5 @@
 <!--pages/list/list.wxml-->
 <text>播放列表</text>
+
+
+<songlist Songlist="{{list}}"></songlist>
