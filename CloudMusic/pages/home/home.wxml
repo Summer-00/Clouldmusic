@@ -11,13 +11,13 @@
   </swiper>
 
   <songsheet url="{{hot}}">
-  <text>热门歌单</text>
+  <text class='arrow'>热门歌单</text>
   </songsheet>
   
   
   
   <view class='highquality'>
-    <text>精品歌单</text>
+    <text class='arrow'>精品歌单</text>
     <view class='list-container'>
     <view class='list-content' wx:for="{{highquality}}" wx:key="index" bindtap="toDetail">
      <image lazy-load data-id='{{item.id}}'  src='{{item.coverImgUrl}}'></image>
