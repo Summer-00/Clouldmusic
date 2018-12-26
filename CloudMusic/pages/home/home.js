@@ -11,6 +11,12 @@ Page({
       complete: function (res) { },
     })
   },
+  tosongsheet(){
+    var sheeturl ="hotSongList";
+    wx.navigateTo({
+        url:'/pages/songsheet/songsheet?url='+sheeturl,
+    })
+  },
 
   /**
    * 页面的初始数据
@@ -18,10 +24,7 @@ Page({
   data: {
     slider:[],
     highquality:[],
-    hot:"https://api.bzqll.com/music/netease/hotSongList?key=579621905&cat=全部&limit=6&offset=1",
-    news:"https://api.bzqll.com/music/netease/hotSongList?key=579621905&cat=全部&limit=6&offset=1",
-    highquality:"https://api.bzqll.com/music/netease/highQualitySongList?key=579621905&cat=全部&limit=6"
-
+    hot:[1,2,3]
   },
 
   /**
@@ -37,7 +40,7 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function(res) {
-         console.log("success");
+        //  console.log("success");
       },
       fail: function(res) {
         console.log("faild");
@@ -60,7 +63,7 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        console.log("success");
+        // console.log("success");
       },
       fail: function (res) {
         console.log("faild");
@@ -77,6 +80,27 @@ Page({
 
     })
     //推荐歌单
+    wx.request({
+      url: "https://api.bzqll.com/music/netease/hotSongList?key=579621905&cat=全部&limit=6&offset=1",
+      data: '',
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        // console.log("success");
+      },
+      fail: function (res) {
+        console.log("faild");
+      },
+      complete: (res) => {
+        console.log(res);
+        this.setData({
+          hot: res.data.data
+        })
+      },
+    });
+  
    
     
   },

@@ -5,15 +5,13 @@
     "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
-  
     "pages/search/search",
     "pages/user/user",
-  
     "pages/mvplay/mvplay",
     "pages/singer/singer",
     "pages/rank/rank",
-    
-    "pages/sheetdetail/sheetdetail"
+    "pages/sheetdetail/sheetdetail",
+    "pages/songsheet/songsheet"
   ],
   "window": {
     "backgroundTextStyle": "light",

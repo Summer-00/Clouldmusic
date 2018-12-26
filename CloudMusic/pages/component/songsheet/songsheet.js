@@ -4,7 +4,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-      url:String
+      list:{
+        type: Array,
+        value:[],
+        observer:function(){
+          // console.log(this)
+        }
+        
+      }
   },
 
   /**
@@ -17,26 +24,28 @@ Component({
   },
   ready(){
     // console.log(this.data.url)
-    wx.request({
-      url:this.data.url,
-      data: '',
-      header: {},
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: function (res) {
-        console.log("success");
-      },
-      fail: function (res) {
-        console.log("faild");
-      },
-      complete: (res) => {
-        console.log(res);
-        this.setData({
-          list: res.data.data
-        })
-      },
-    });
+  //   wx.request({
+  //     url:this.data.url,
+  //     data: '',
+  //     header: {},
+  //     method: 'GET',
+  //     dataType: 'json',
+  //     responseType: 'text',
+  //     success: function (res) {
+  //       console.log("success");
+  //     },
+  //     fail: function (res) {
+  //       console.log("faild");
+  //     },
+  //     complete: (res) => {
+  //       console.log(res);
+  //       this.setData({
+  //         list: res.data.data
+  //       })
+  //     },
+  //   });
+  // console.log(this.data.list)
+   
   },
 
   /**
@@ -45,7 +54,7 @@ Component({
   methods: {
     toDetail(e){
       var id=e.target.dataset.id
-      console.log(e)
+      // console.log(e)
       wx.navigateTo({
         url: '/pages/sheetdetail/sheetdetail?id='+id,
         success: function(res) {},

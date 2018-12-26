@@ -1,0 +1,8 @@
+<!--pages/songsheet/songsheet.wxml-->
+<!-- <text>pages/songsheet/songsheet.wxml</text> -->
+
+ <songsheet list="{{list}}">
+  <text class='arrow'>热门歌单</text>
+  </songsheet>
+
+

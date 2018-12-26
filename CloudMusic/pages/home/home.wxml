@@ -10,9 +10,8 @@
       </swiper-item>
   </swiper>
 
-  <songsheet url="{{hot}}">
-  <text class='arrow'>热门歌单</text>
-  </songsheet>
+  <text class='arrow' bindtap='tosongsheet'>热门歌单</text>
+  <songsheet list="{{hot}}"></songsheet>
   
   
   

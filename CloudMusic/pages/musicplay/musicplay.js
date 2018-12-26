@@ -100,6 +100,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     var songid = options.id;
     this.setData({
       songid: songid
@@ -206,11 +209,13 @@ Page({
           }
 
         })
-
+        wx.hideLoading();
       }
+   
     })
    
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -253,6 +258,7 @@ Page({
   onPullDownRefresh: function () {
 
   },
+
 
   /**
    * 页面上拉触底事件的处理函数
