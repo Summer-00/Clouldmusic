@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/list/list",
     "pages/musicplay/musicplay",
-    "pages/home/home",
+    
     "pages/index/index",
     "pages/logs/logs",
     "pages/search/search",
