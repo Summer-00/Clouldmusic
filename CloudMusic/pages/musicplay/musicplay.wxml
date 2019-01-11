@@ -18,6 +18,7 @@
 
     <view catchtap='showlyric' wx:else class='lyric'>
        <view wx:for="{{lyric}}">{{item}}</view>
+       <view wx:if="{{nolrc}}">无歌词</view>
 
     </view>
 
@@ -29,7 +30,7 @@
       </view>
       
       <view class='prev'>
-      <image src='/pages/image/ajh.png'></image>
+      <image catchtap='prev' src='/pages/image/ajh.png'></image>
       </view>
     
       <view catchtap='playmusic' class='play'>
@@ -38,7 +39,7 @@
       </view>
 
       <view class='next'>
-      <image src='/pages/image/ajb.png'></image>
+      <image catchtap='next' src='/pages/image/ajb.png'></image>
       </view>
       
       <view class='slider'  >
@@ -59,21 +60,7 @@
     </view>
 
     <view class='list {{showlist}}'>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-      <view>播放列表 </view>
-
-      <view>播放列表 </view>
-
+    <songlist number="{{number}}" Songlist="{{playlist}}"></songlist>
     </view>
 
     </view>

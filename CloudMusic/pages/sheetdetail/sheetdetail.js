@@ -1,8 +1,18 @@
 // pages/sheetdetail/sheetdetail.js
+const app=getApp()
 Page({
   ToMusicplayer(event){
     var id = event.currentTarget.dataset.id;
     // console.log(event)
+    //获取歌单信息
+    var index = event.currentTarget.dataset.index;
+    var song=this.data.details.songs
+    //不存在就push
+    if (app.globalData.songlistdata.indexOf(song[index])==-1) 
+    { app.globalData.songlistdata.push(song[index]);
+      app.globalData.playing = app.globalData.songlistdata.length-1
+    }
+
     wx.navigateTo({
       url: '/pages/musicplay/musicplay?id=' + id,
       success: function (res) { },

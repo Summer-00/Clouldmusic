@@ -9,7 +9,7 @@
 
 <view>
   <view  class='head'>
-    <image class='pagepic' laszy-load  src='{{details.songListPic}}'></image>
+    <image class='pagepic' lazy-load  src='{{details.songListPic}}'></image>
     <view>
     <text class='title'>{{details.songListName}}</text>
 
@@ -41,7 +41,7 @@
     <view wx:for="{{details.songs}}" wx:key="index" class='list'>
       <text class='index'>{{index+1}}</text>
 
-      <view data-id='{{item.id}}' bindtap='ToMusicplayer'  class='song'>
+      <view data-id='{{item.id}}' data-index='{{index}}' bindtap='ToMusicplayer'  class='song'>
         <text class='line-style songname'>{{item.name}}</text>
         <text class='line-style singer'>{{item.singer}}</text>
       </view>

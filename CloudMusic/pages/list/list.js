@@ -1,29 +1,13 @@
 // pages/list/list.js
+const app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [{
-      id: "1304929044",
-      name: "征服太平洋",
-      singer: "GALA",
-      pic: "https://api.bzqll.com/music/netease/pic?id=1304929044&imgSize=300&key=579621905",
-      lrc: "https://api.bzqll.com/music/netease/lrc?id=1304929044&key=579621905",
-      url: "https://api.bzqll.com/music/netease/url?id=1304929044&key=579621905",
-      time: 270
-    },
-{
-    id: "29592140",
-    name: "征服太平洋",
-    singer: "GALA",
-    pic: "https://api.bzqll.com/music/netease/pic?id=29592140&imgSize=300&key=579621905",
-    lrc: "https://api.bzqll.com/music/netease/lrc?id=29592140&key=579621905",
-    url: "https://api.bzqll.com/music/netease/url?id=29592140&key=579621905",
-    time: 225
-  }
-    ]
+    list: [],
+    number:0
   },
 
   /**
@@ -44,7 +28,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      list: app.globalData.songlistdata,
+      number:app.globalData.playing
+    })
   },
 
   /**

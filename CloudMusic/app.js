@@ -38,6 +38,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    songlistdata:[]
+    songlistdata:[],
+    playing:0
   }
 })

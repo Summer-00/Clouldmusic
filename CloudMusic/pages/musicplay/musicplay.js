@@ -1,5 +1,6 @@
 // pages/musicplay/musicplay.js
 const music = wx.getBackgroundAudioManager();
+const app=getApp();
 Page({
   playmusic(){
     if(!this.data.isPlay){
@@ -42,7 +43,7 @@ Page({
   },
   getlength(length){
     
-    //设置长度
+    //音乐时间长度
     var second = length % 60;
     var min = (length - second) / 60;
     min = min >= 10 ? min : "0" + min;
@@ -52,6 +53,13 @@ Page({
 
   },
   showlyric(){
+    //歌词
+    if (this.data.showlist=="active") {
+      this.setData({
+        showlist: ""
+      })
+      return
+    }
     if(this.data.show){
       this.setData({
         show: false
@@ -63,6 +71,7 @@ Page({
     }
   },
   showlist(){
+    //播放列表
     console.log(1);
     if (this.data.showlist=="active") {
       this.setData({
@@ -74,12 +83,32 @@ Page({
       })
     }
   },
+  next(){
+    //下一首
+    // if (this.data.number == app.globalData.songlistdata.length-1){
+    //   return
+    // }
+    // var index= this.data.number+1;
+    // var id = app.globalData.songlistdata[index].id
+    // app.globalData.playering++;
+    // this.setData({
+    //   number:index
+    // })
+    // wx.navigateTo({
+    //   url: '/pages/musicplay/musicplay?id=' + id,
+    //   success: function (res) { },
+    //   fail: function (res) { },
+    //   complete: function (res) { },
+    // })
+  },
+  prev(){},
   
   /**
    * 页面的初始数据
    */
   data: {
     // songid:"",
+    number:0,
     isPlay:false,
     rotate:0,
     timer:"",
@@ -91,15 +120,22 @@ Page({
     value:0,
     show:true,
     lyric:[],
-  
+    playlist:[],
     showlist:"",
-    details:""
+    details:"",
+    nolrc:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+ 
+    this.setData({
+      number: app.globalData.playing
+      //控制歌单播放按钮样式
+    })  
+    console.log(app.globalData.playing)
     wx.showLoading({
       title: '加载中',
     })
@@ -149,6 +185,13 @@ Page({
         wx.request({
           url: this.data.details.lrc,
           complete: (res) => {
+            if(res.data==[]){
+              //无歌词
+              this.setData({
+                nolrc:true
+              })
+
+            }
             var arr = res.data.split("\n")
             arr.pop();
             console.log(arr);
@@ -236,6 +279,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      playlist: app.globalData.songlistdata
+    })
   },
 
   /**
